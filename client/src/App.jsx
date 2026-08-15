@@ -39,11 +39,7 @@ import ScrollToTop from "./components/common/ScrollToTop.jsx";
 const PageLayout = ({ children }) => (
   <div className="min-h-screen flex flex-col">
     <Navbar />
-    <main className="flex-1 bg-slate-50">
-      {" "}
-      {/* light background for content */}
-      {children}
-    </main>
+    <main className="flex-1 bg-slate-50"> {children}</main>
     <Footer />
   </div>
 );
@@ -53,155 +49,155 @@ const App = () => {
     <>
       <ScrollToTop />
       <Routes>
-      {/* Public / Buyer */}
-      <Route
-        path="/"
-        element={
-          <PageLayout>
-            <Home />
-          </PageLayout>
-        }
-      />
-      <Route
-        path="/properties"
-        element={
-          <PageLayout>
-            <Properties />
-          </PageLayout>
-        }
-      />
-      <Route
-        path="/properties/:id"
-        element={
-          <PageLayout>
-            <PropertyDetails />
-          </PageLayout>
-        }
-      />
-      <Route
-        path="/about"
-        element={
-          <PageLayout>
-            <About />
-          </PageLayout>
-        }
-      />
-      <Route
-        path="/compare"
-        element={
-          <PageLayout>
-            <CompareProperties />
-          </PageLayout>
-        }
-      />
-      <Route
-        path="/contact"
-        element={
-          <PageLayout>
-            <Contact />
-          </PageLayout>
-        }
-      />
-
-      <Route
-        path="/login"
-        element={
-          <PageLayout>
-            <Login />
-          </PageLayout>
-        }
-      />
-      <Route
-        path="/register"
-        element={
-          <PageLayout>
-            <Register />
-          </PageLayout>
-        }
-      />
-      <Route
-        path="/verify-otp"
-        element={
-          <PageLayout>
-            <VerifyOtp />
-          </PageLayout>
-        }
-      />
-      <Route
-        path="/forgot-password"
-        element={
-          <PageLayout>
-            <ForgotPassword />
-          </PageLayout>
-        }
-      />
-
-      <Route
-        path="/reset-password"
-        element={
-          <PageLayout>
-            <ResetPassword />
-          </PageLayout>
-        }
-      />
-
-      <Route element={<ProtectedRoute />}>
+        {/* Public / Buyer */}
         <Route
-          path="/profile"
+          path="/"
           element={
             <PageLayout>
-              <Account />
+              <Home />
+            </PageLayout>
+          }
+        />
+        <Route
+          path="/properties"
+          element={
+            <PageLayout>
+              <Properties />
+            </PageLayout>
+          }
+        />
+        <Route
+          path="/properties/:id"
+          element={
+            <PageLayout>
+              <PropertyDetails />
+            </PageLayout>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <PageLayout>
+              <About />
+            </PageLayout>
+          }
+        />
+        <Route
+          path="/compare"
+          element={
+            <PageLayout>
+              <CompareProperties />
+            </PageLayout>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <PageLayout>
+              <Contact />
             </PageLayout>
           }
         />
 
         <Route
-          path="/account"
+          path="/login"
           element={
             <PageLayout>
-              <Account />
+              <Login />
             </PageLayout>
           }
         />
-      </Route>
-
-      <Route element={<RoleRoute allowedRoles={["buyer"]} />}>
         <Route
-          path="/favourites"
+          path="/register"
           element={
             <PageLayout>
-              <Favourites />
+              <Register />
             </PageLayout>
           }
         />
-      </Route>
+        <Route
+          path="/verify-otp"
+          element={
+            <PageLayout>
+              <VerifyOtp />
+            </PageLayout>
+          }
+        />
+        <Route
+          path="/forgot-password"
+          element={
+            <PageLayout>
+              <ForgotPassword />
+            </PageLayout>
+          }
+        />
 
-      {/* Admin */}
-      <Route element={<RoleRoute allowedRoles={["admin"]} />}>
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<AdminDashboard />} />
-          <Route path="dashboard" element={<AdminDashboard />} />
-          <Route path="users" element={<AdminUsers />} />
-          <Route path="properties" element={<AdminProperties />} />
+        <Route
+          path="/reset-password"
+          element={
+            <PageLayout>
+              <ResetPassword />
+            </PageLayout>
+          }
+        />
+
+        <Route element={<ProtectedRoute />}>
+          <Route
+            path="/profile"
+            element={
+              <PageLayout>
+                <Account />
+              </PageLayout>
+            }
+          />
+
+          <Route
+            path="/account"
+            element={
+              <PageLayout>
+                <Account />
+              </PageLayout>
+            }
+          />
         </Route>
-      </Route>
 
-      {/* Seller */}
-      <Route element={<RoleRoute allowedRoles={["seller"]} />}>
-        <Route path="/seller" element={<SellerLayout />}>
-          <Route index element={<SellerDashboard />} />
-          <Route path="dashboard" element={<SellerDashboard />} />
-          <Route path="properties" element={<SellerProperties />} />
-          <Route path="properties/add" element={<AddProperty />} />
-          <Route path="properties/:id/edit" element={<EditProperty />} />
-          <Route path="inquiries" element={<SellerInquiries />} />
-          <Route path="price-predictor" element={<PricePredictor />} />
-          <Route path="profile" element={<Account />} />
+        <Route element={<RoleRoute allowedRoles={["buyer"]} />}>
+          <Route
+            path="/favourites"
+            element={
+              <PageLayout>
+                <Favourites />
+              </PageLayout>
+            }
+          />
         </Route>
-      </Route>
-    </Routes>
-  </>
-);
+
+        {/* Admin */}
+        <Route element={<RoleRoute allowedRoles={["admin"]} />}>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="users" element={<AdminUsers />} />
+            <Route path="properties" element={<AdminProperties />} />
+          </Route>
+        </Route>
+
+        {/* Seller */}
+        <Route element={<RoleRoute allowedRoles={["seller"]} />}>
+          <Route path="/seller" element={<SellerLayout />}>
+            <Route index element={<SellerDashboard />} />
+            <Route path="dashboard" element={<SellerDashboard />} />
+            <Route path="properties" element={<SellerProperties />} />
+            <Route path="properties/add" element={<AddProperty />} />
+            <Route path="properties/:id/edit" element={<EditProperty />} />
+            <Route path="inquiries" element={<SellerInquiries />} />
+            <Route path="price-predictor" element={<PricePredictor />} />
+            <Route path="profile" element={<Account />} />
+          </Route>
+        </Route>
+      </Routes>
+    </>
+  );
 };
 
 export default App;
