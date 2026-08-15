@@ -1,0 +1,18 @@
+{
+    "features": [
+        "district",
+        "area",
+        "perch",
+        "bedrooms",
+        "bathrooms",
+        "kitchen_area_sqft",
+        "parking_spots",
+        "has_garden",
+        "has_ac",
+        "water_supply",
+        "electricity",
+        "floors",
+        "year_built"
+    ],
+    "target": "price_lkr"
+}
